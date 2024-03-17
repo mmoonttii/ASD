@@ -1,0 +1,288 @@
+
+Selection Sort iterativo
+Tipo Array: 0	 Dimensione Array: 100
+--> Tempo impiegato: 0.000005
+--> Confronti effettuati: 0
+--> Scambi effettuati: 99
+
+Selection Sort ricorsivo
+Tipo Array: 0	 Dimensione Array: 100
+--> Tempo impiegato: 0.000004
+--> Confronti effettuati: 0
+--> Scambi effettuati: 99
+
+Selection Sort iterativo
+Tipo Array: 0	 Dimensione Array: 1000
+--> Tempo impiegato: 0.000245
+--> Confronti effettuati: 0
+--> Scambi effettuati: 999
+
+Selection Sort ricorsivo
+Tipo Array: 0	 Dimensione Array: 1000
+--> Tempo impiegato: 0.000245
+--> Confronti effettuati: 0
+--> Scambi effettuati: 999
+
+Selection Sort iterativo
+Tipo Array: 0	 Dimensione Array: 10000
+--> Tempo impiegato: 0.025259
+--> Confronti effettuati: 0
+--> Scambi effettuati: 9999
+
+Selection Sort ricorsivo
+Tipo Array: 0	 Dimensione Array: 10000
+--> Tempo impiegato: 0.023918
+--> Confronti effettuati: 0
+--> Scambi effettuati: 9999
+
+Selection Sort iterativo
+Tipo Array: 0	 Dimensione Array: 100000
+--> Tempo impiegato: 2.384957
+--> Confronti effettuati: 0
+--> Scambi effettuati: 99999
+
+Selection Sort ricorsivo
+Tipo Array: 0	 Dimensione Array: 100000
+--> Tempo impiegato: 2.387286
+--> Confronti effettuati: 0
+--> Scambi effettuati: 99999
+
+Selection Sort iterativo
+Tipo Array: 0	 Dimensione Array: 200000
+--> Tempo impiegato: 9.546265
+--> Confronti effettuati: 0
+--> Scambi effettuati: 199999
+
+Selection Sort ricorsivo
+Tipo Array: 0	 Dimensione Array: 200000
+--> Tempo impiegato: 9.537518
+--> Confronti effettuati: 0
+--> Scambi effettuati: 199999
+
+Selection Sort iterativo
+Tipo Array: 0	 Dimensione Array: 500000
+--> Tempo impiegato: 59.654143
+--> Confronti effettuati: 0
+--> Scambi effettuati: 499999
+
+Selection Sort ricorsivo
+Tipo Array: 0	 Dimensione Array: 500000
+--> Tempo impiegato: 59.636970
+--> Confronti effettuati: 0
+--> Scambi effettuati: 499999
+
+Selection Sort iterativo
+Tipo Array: 1	 Dimensione Array: 100
+--> Tempo impiegato: 0.000005
+--> Confronti effettuati: 137
+--> Scambi effettuati: 99
+
+Selection Sort ricorsivo
+Tipo Array: 1	 Dimensione Array: 100
+--> Tempo impiegato: 0.000005
+--> Confronti effettuati: 117
+--> Scambi effettuati: 99
+
+Selection Sort iterativo
+Tipo Array: 1	 Dimensione Array: 1000
+--> Tempo impiegato: 0.000262
+--> Confronti effettuati: 2476
+--> Scambi effettuati: 999
+
+Selection Sort ricorsivo
+Tipo Array: 1	 Dimensione Array: 1000
+--> Tempo impiegato: 0.000263
+--> Confronti effettuati: 2370
+--> Scambi effettuati: 999
+
+Selection Sort iterativo
+Tipo Array: 1	 Dimensione Array: 10000
+--> Tempo impiegato: 0.024118
+--> Confronti effettuati: 35476
+--> Scambi effettuati: 9999
+
+Selection Sort ricorsivo
+Tipo Array: 1	 Dimensione Array: 10000
+--> Tempo impiegato: 0.024127
+--> Confronti effettuati: 35876
+--> Scambi effettuati: 9999
+
+Selection Sort iterativo
+Tipo Array: 1	 Dimensione Array: 100000
+--> Tempo impiegato: 2.387808
+--> Confronti effettuati: 524253
+--> Scambi effettuati: 99999
+
+Selection Sort ricorsivo
+Tipo Array: 1	 Dimensione Array: 100000
+--> Tempo impiegato: 2.387977
+--> Confronti effettuati: 479084
+--> Scambi effettuati: 99999
+
+Selection Sort iterativo
+Tipo Array: 1	 Dimensione Array: 200000
+--> Tempo impiegato: 9.548120
+--> Confronti effettuati: 1164918
+--> Scambi effettuati: 199999
+
+Selection Sort ricorsivo
+Tipo Array: 1	 Dimensione Array: 200000
+--> Tempo impiegato: 9.546123
+--> Confronti effettuati: 1089018
+--> Scambi effettuati: 199999
+
+Selection Sort iterativo
+Tipo Array: 1	 Dimensione Array: 500000
+--> Tempo impiegato: 59.722291
+--> Confronti effettuati: 3384527
+--> Scambi effettuati: 499999
+
+Selection Sort ricorsivo
+Tipo Array: 1	 Dimensione Array: 500000
+--> Tempo impiegato: 59.666742
+--> Confronti effettuati: 3539115
+--> Scambi effettuati: 499999
+
+Selection Sort iterativo
+Tipo Array: 2	 Dimensione Array: 100
+--> Tempo impiegato: 0.000006
+--> Confronti effettuati: 2500
+--> Scambi effettuati: 99
+
+Selection Sort ricorsivo
+Tipo Array: 2	 Dimensione Array: 100
+--> Tempo impiegato: 0.000005
+--> Confronti effettuati: 2500
+--> Scambi effettuati: 99
+
+Selection Sort iterativo
+Tipo Array: 2	 Dimensione Array: 1000
+--> Tempo impiegato: 0.000367
+--> Confronti effettuati: 250000
+--> Scambi effettuati: 999
+
+Selection Sort ricorsivo
+Tipo Array: 2	 Dimensione Array: 1000
+--> Tempo impiegato: 0.000250
+--> Confronti effettuati: 250000
+--> Scambi effettuati: 999
+
+Selection Sort iterativo
+Tipo Array: 2	 Dimensione Array: 10000
+--> Tempo impiegato: 0.031415
+--> Confronti effettuati: 25000000
+--> Scambi effettuati: 9999
+
+Selection Sort ricorsivo
+Tipo Array: 2	 Dimensione Array: 10000
+--> Tempo impiegato: 0.024129
+--> Confronti effettuati: 25000000
+--> Scambi effettuati: 9999
+
+Selection Sort iterativo
+Tipo Array: 2	 Dimensione Array: 100000
+--> Tempo impiegato: 2.966688
+--> Confronti effettuati: 2500000000
+--> Scambi effettuati: 99999
+
+Selection Sort ricorsivo
+Tipo Array: 2	 Dimensione Array: 100000
+--> Tempo impiegato: 2.455765
+--> Confronti effettuati: 2500000000
+--> Scambi effettuati: 99999
+
+Selection Sort iterativo
+Tipo Array: 2	 Dimensione Array: 200000
+--> Tempo impiegato: 9.576783
+--> Confronti effettuati: 10000000000
+--> Scambi effettuati: 199999
+
+Selection Sort ricorsivo
+Tipo Array: 2	 Dimensione Array: 200000
+--> Tempo impiegato: 10.183695
+--> Confronti effettuati: 10000000000
+--> Scambi effettuati: 199999
+
+Selection Sort iterativo
+Tipo Array: 2	 Dimensione Array: 500000
+--> Tempo impiegato: 60.709379
+--> Confronti effettuati: 62500000000
+--> Scambi effettuati: 499999
+
+Selection Sort ricorsivo
+Tipo Array: 2	 Dimensione Array: 500000
+--> Tempo impiegato: 68.610549
+--> Confronti effettuati: 62500000000
+--> Scambi effettuati: 499999
+
+Selection Sort iterativo
+Tipo Array: 3	 Dimensione Array: 100
+--> Tempo impiegato: 0.000006
+--> Confronti effettuati: 343
+--> Scambi effettuati: 99
+
+Selection Sort ricorsivo
+Tipo Array: 3	 Dimensione Array: 100
+--> Tempo impiegato: 0.000006
+--> Confronti effettuati: 337
+--> Scambi effettuati: 99
+
+Selection Sort iterativo
+Tipo Array: 3	 Dimensione Array: 1000
+--> Tempo impiegato: 0.000282
+--> Confronti effettuati: 5584
+--> Scambi effettuati: 999
+
+Selection Sort ricorsivo
+Tipo Array: 3	 Dimensione Array: 1000
+--> Tempo impiegato: 0.000282
+--> Confronti effettuati: 5528
+--> Scambi effettuati: 999
+
+Selection Sort iterativo
+Tipo Array: 3	 Dimensione Array: 10000
+--> Tempo impiegato: 0.024374
+--> Confronti effettuati: 77783
+--> Scambi effettuati: 9999
+
+Selection Sort ricorsivo
+Tipo Array: 3	 Dimensione Array: 10000
+--> Tempo impiegato: 0.024405
+--> Confronti effettuati: 78509
+--> Scambi effettuati: 9999
+
+Selection Sort iterativo
+Tipo Array: 3	 Dimensione Array: 100000
+--> Tempo impiegato: 2.390415
+--> Confronti effettuati: 1004889
+--> Scambi effettuati: 99999
+
+Selection Sort ricorsivo
+Tipo Array: 3	 Dimensione Array: 100000
+--> Tempo impiegato: 5.515038
+--> Confronti effettuati: 1005395
+--> Scambi effettuati: 99999
+
+Selection Sort iterativo
+Tipo Array: 3	 Dimensione Array: 200000
+--> Tempo impiegato: 9.554280
+--> Confronti effettuati: 2155679
+--> Scambi effettuati: 199999
+
+Selection Sort ricorsivo
+Tipo Array: 3	 Dimensione Array: 200000
+--> Tempo impiegato: 9.622434
+--> Confronti effettuati: 2157297
+--> Scambi effettuati: 199999
+
+Selection Sort iterativo
+Tipo Array: 3	 Dimensione Array: 500000
+--> Tempo impiegato: 59.732372
+--> Confronti effettuati: 5835850
+--> Scambi effettuati: 499999
+
+Selection Sort ricorsivo
+Tipo Array: 3	 Dimensione Array: 500000
+--> Tempo impiegato: 59.675390
+--> Confronti effettuati: 5837552
+--> Scambi effettuati: 499999

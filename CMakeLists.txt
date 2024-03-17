@@ -7,7 +7,7 @@ set(COMMON usefulFunctions.c
 
 add_executable(2_2confrontoSelectionSort
 				${COMMON}
-				E02/2_2_confrontoSelectionSort.c
+        E02/2_2confrontoSelectionSort.c
 )
 
 

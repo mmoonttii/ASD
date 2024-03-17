@@ -3,8 +3,8 @@
 #include <time.h>
 #include "../usefulFunctions.h"
 
-uint64_t confronti_iter = 0, scambi_iter = 0;
-uint64_t confronti_ric = 0, scambi_ric = 0;
+unsigned long long confronti_iter = 0, scambi_iter = 0;
+unsigned long long confronti_ric = 0, scambi_ric = 0;
 
 void selectionSortIter(int arr[], int dim) {
     int min = 0;
