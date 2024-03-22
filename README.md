@@ -1,6 +1,6 @@
 # Algoritmi e Strutture Dati
 
-## Lezioni:
+## Lezioni
   - L01: Algoritmi, Problema dell'ordinamento e della ricerca, selectionSort, binarySearch
   - L02: Ricorsione, complessità computazionale
   - L03: Complessità temporale degli algoritmi iterativi e ricorsivi
@@ -9,7 +9,7 @@
   - L06: Liste ordinate, stack, code: implementazione mediante array
   - L07: Liste singolarmente e doppiamente concatenate, stack e code: implementazione mediante puntatori
 
-## Esercitazioni di Laboratorio:
+## Esercitazioni di Laboratorio
   - E01: selectionSort, linearSearch, binarySearch
   - E02: selectionSort ricorsivo, confronto tra selectionSort
   - E03: algoritmo di Knuth, Morris e Pratt
