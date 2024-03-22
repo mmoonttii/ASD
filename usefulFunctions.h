@@ -24,4 +24,6 @@ void swap(int *a, int *b);
 // Stampa array
 void printArray(int arr[], int dim);
 
+int findMin(int arr[], int minPos, int start, int dim);
+
 #endif //ASD_USEFULFUNCTIONS_H

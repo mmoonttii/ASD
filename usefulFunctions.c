@@ -66,3 +66,13 @@ void printArray(int arr[], int dim) {
         printf("%d ", arr[i]);
     }
 }
+
+int findMin(int arr[], int minPos, int start, int dim) {
+    if (start == dim) {
+        return minPos;
+    }
+    if (arr[start] < arr[minPos]) {
+        minPos = start;
+    }
+    return findMin(arr, minPos, start + 1, dim);
+}

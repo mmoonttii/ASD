@@ -2,7 +2,6 @@
 #include <time.h>
 #include <stdlib.h>
 #include "../usefulFunctions.h"
-#include "selectionSortIter.h"
 
 /** selectionSortIter\n
  *  - Problema dell'ordinamento: data una sequenza di valori, disporre in ordine, secondo un opportuno criterio, una
@@ -36,7 +35,7 @@ void selectionSortIter(int arr[], int dim) {
     }
 }
 
-int Notmain(){
+int main(){
 	srand(time(NULL));
 	clock_t start, end;
 	double t;

@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include <string.h>
 #include "../usefulFunctions.h"
 
 unsigned long long confronti_iter = 0, scambi_iter = 0;
@@ -19,17 +20,6 @@ void selectionSortIter(int arr[], int dim) {
         swap(&arr[min], &arr[i]);
         scambi_iter++;
     }
-}
-
-int findMin(int arr[], int minPos, int start, int dim) {
-    if (start == dim) {
-        return minPos;
-    }
-    if (arr[start] < arr[minPos]) {
-        confronti_ric++;
-        minPos = start;
-    }
-    return findMin(arr, minPos, start + 1, dim);
 }
 
 void selectionSortRicor(int arr[], int dim, int start) {
@@ -64,7 +54,8 @@ int main() {
             scambi_ric = 0, confronti_ric = 0;
 
             arr1 = generaArray(arrDim[j], i);
-            arr2 = generaArray(arrDim[j], i);
+            arr2 = calloc(arrDim[j], sizeof(int));
+            memcpy(arr2, arr1, arrDim[j] * sizeof(int));
 
             start1 = clock();
             selectionSortIter(arr1, arrDim[j]);
@@ -72,11 +63,8 @@ int main() {
 
             t1 = ((long double) (end1 - start1)) / CLOCKS_PER_SEC;
 
-            printf("\nSelection Sort iterativo\n"
-                   "Tipo Array: %d\t Dimensione Array: %d\n"
-                   "--> Tempo impiegato: %LF\n"
-                   "--> Confronti effettuati: %llu\n"
-                   "--> Scambi effettuati: %llu\n",
+            printf("\nI: %d Dim: %d\n"
+                   "T: %LF Confr: %llu Scambi: %llu\n",
                    i, arrDim[j], t1, confronti_iter, scambi_iter);
 
 
@@ -86,13 +74,13 @@ int main() {
 
             t2 = ((long double) (end2 - start2)) / CLOCKS_PER_SEC;
 
-            printf("\nSelection Sort ricorsivo\n"
-                   "Tipo Array: %d\t Dimensione Array: %d\n"
-                   "--> Tempo impiegato: %LF\n"
-                   "--> Confronti effettuati: %llu\n"
-                   "--> Scambi effettuati: %llu\n",
+            printf("\nR: %d Dim: %d\n"
+                   "T: %LF Confr: %llu Scambi: %llu\n",
                    i, arrDim[j], t2, confronti_ric, scambi_ric);
+
+            free(arr1), free(arr2);
 
         }
     }
+
 }

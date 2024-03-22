@@ -5,9 +5,32 @@ set(CMAKE_C_STANDARD 11)
 set(COMMON usefulFunctions.c
 		usefulFunctions.h)
 
+add_executable(1_1selectionSortIter
+				${COMMON}
+				E01/1_1selectionSortIter.c)
+
+add_executable(1_2antonino
+				E01/1_2antonino.c)
+
+add_executable(1_3linearSearch
+				${COMMON}
+				E01/1_3linearSearch.c)
+
+add_executable(1_45binarySearch
+				${COMMON}
+				E01/1_45binarySearch.c)
+
+add_executable(2_1selSortRicor
+				${COMMON}
+				E02/2_1selSortRicor.c)
+
 add_executable(2_2confrontoSelectionSort
 				${COMMON}
-        E02/2_2confrontoSelectionSort.c
-)
+        		E02/2_2confrontoSelectionSort.c)
 
+add_executable(2_3hotel
+				E02/2_3hotel.c)
 
+add_executable(3_1
+				${COMMON}
+		E03/3_1KMP.c)

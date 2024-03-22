@@ -2,10 +2,21 @@
 #include <stdlib.h>
 #include <time.h>
 #include "../usefulFunctions.h"
-#include "selectionSortIter.h"
 
 int contL = 0;
 
+void selectionSortIter(int arr[], int dim) {
+    int min = 0;
+    for (int i = 0; i <= dim - 2; ++i) {
+        min = i;
+        for (int j = i + 1; j <= dim - 1; ++j) {
+            if (arr[j] < arr[min]) {
+                min = j;
+            }
+        }
+        swap(&arr[min], &arr[i]);
+    }
+}
 int linearSearch(int arr[], int dim, int numRic) {
     int pos = 0;
     while ((pos < dim) && (arr[pos] <= numRic)) {
@@ -20,7 +31,7 @@ int linearSearch(int arr[], int dim, int numRic) {
     return -1;
 }
 
-int Notmain(){
+int main(){
     srand(time(NULL));
 	clock_t start, end;
 	double t;

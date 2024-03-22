@@ -3,16 +3,6 @@
 #include <stdio.h>
 #include "../usefulFunctions.h"
 
-int findMin(int arr[], int minPos, int start, int dim) {
-    if (start == dim) {
-        return minPos;
-    }
-    if (arr[start] < arr[minPos]) {
-        minPos = start;
-    }
-    return findMin(arr, minPos, start + 1, dim);
-}
-
 void selectionSortRicor(int arr[], int dim, int start) {
     int minIdx = 0;
 
@@ -25,7 +15,7 @@ void selectionSortRicor(int arr[], int dim, int start) {
     selectionSortRicor(arr, dim, start + 1);
 }
 
-int Notmain(){
+int main(){
     srand(time(NULL));
 	clock_t start, end;
 	double t;
