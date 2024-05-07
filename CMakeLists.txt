@@ -31,6 +31,16 @@ add_executable(2_2confrontoSelectionSort
 add_executable(2_3hotel
 				E02/2_3hotel.c)
 
-add_executable(3_1
+add_executable(3_1KMP
 				${COMMON}
-		E03/3_1KMP.c)
+				E03/3_1KMP.c)
+
+add_executable(4_5amazon
+				${COMMON}
+				E04/4_5amazon.c)
+
+add_executable(5_spotify
+				E05/5_spotify.c)
+
+add_executable(6_alberi
+		E06/6_alberiDecisionali.c)
