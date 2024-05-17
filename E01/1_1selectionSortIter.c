@@ -22,17 +22,22 @@
             if (A[j] < A[min]) then min ← j\n
         scambia A[min] con A[i]
 */
-void selectionSortIter(int arr[], int dim) {
-    int min = 0;
-    for (int i = 0; i <= dim - 2; ++i) {
-        min = i;
-        for (int j = i + 1; j <= dim - 1; ++j) {
-            if (arr[j] < arr[min]) {
-                min = j;
-            }
-        }
-        swap(&arr[min], &arr[i]);
-    }
+
+unsigned long long selectionSort_swap = 0, selectionSort_cmp = 0;
+
+void selectionSortIter(int *arr, int dim) {
+	int min = 0;
+	for (int i = 0; i <= dim - 2; ++i) {
+		min = i;
+		for (int j = i + 1; j <= dim - 1; ++j) {
+			if (arr[j] < arr[min]) {
+				selectionSort_cmp++;
+				min = j;
+			}
+		}
+		swap(&arr[min], &arr[i]);
+		selectionSort_swap++;
+	}
 }
 
 int main(){

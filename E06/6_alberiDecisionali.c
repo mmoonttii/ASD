@@ -131,7 +131,7 @@ void classificaPesce(Nodo *rdx) {
 }
 
 void freeAll(Nodo *rdx) {
-	Nodo *nodo = rdx
+	Nodo *nodo = rdx;
 	while (!isLeaf)
 }
 

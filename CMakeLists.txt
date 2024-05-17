@@ -5,9 +5,12 @@ set(CMAKE_C_STANDARD 11)
 set(COMMON usefulFunctions.c
 		usefulFunctions.h)
 
+set(SELECTION_SORT E01/1_1selectionSortIter.c
+		 		   E01/1_1selectionSortIter.h)
+
 add_executable(1_1selectionSortIter
 				${COMMON}
-				E01/1_1selectionSortIter.c)
+				${SELECTION_SORT})
 
 add_executable(1_2antonino
 				E01/1_2antonino.c)
@@ -43,4 +46,11 @@ add_executable(5_spotify
 				E05/5_spotify.c)
 
 add_executable(6_alberi
-		E06/6_alberiDecisionali.c)
+				E06/6_alberiDecisionali.c)
+
+add_executable(10_parcheggio
+				E10/10_parcheggio.c)
+add_executable(report
+				${COMMON}
+				${SELECTION_SORT}
+				report/report.c)
