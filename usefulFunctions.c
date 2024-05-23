@@ -29,7 +29,7 @@ void arrayORDINATO(int arr[], int dim) {
     }
 }
 
-void arrayQUASI_ORDINATO (int arr[], int dim) {
+void arrayQUASI_ORDINATO(int arr[], int dim) {
     int i = 0;
     for (i = 0; i < dim / 2; ++i) {
         arr[i] = i;
@@ -39,13 +39,13 @@ void arrayQUASI_ORDINATO (int arr[], int dim) {
     }
 }
 
-void arrayINV_ORDINATO (int arr[], int dim) {
+void arrayINV_ORDINATO(int arr[], int dim) {
     for (int i = 0; i < dim; ++i) {
         arr[i] = dim - i;
     }
 }
 
-void arrayCASUALE (int arr[], int dim) {
+void arrayCASUALE(int arr[], int dim) {
     for (int i = 0; i < dim; ++i) {
         arr[i] = rand();
     }

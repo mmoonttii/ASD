@@ -4,8 +4,8 @@
 #include <string.h>
 #include "../usefulFunctions.h"
 
-unsigned long long confronti_iter = 0, scambi_iter = 0;
-unsigned long long confronti_ric = 0, scambi_ric = 0;
+unsigned long long cmprsIter = 0, swapsIter = 0;
+unsigned long long cmprsRic = 0, swapsRic = 0;
 
 void selectionSortIter(int arr[], int dim) {
     int min = 0;
@@ -13,12 +13,12 @@ void selectionSortIter(int arr[], int dim) {
         min = i;
         for (int j = i + 1; j <= dim - 1; ++j) {
             if (arr[j] < arr[min]) {
-                confronti_iter++;
+                cmprsIter++;
                 min = j;
             }
         }
         swap(&arr[min], &arr[i]);
-        scambi_iter++;
+        swapsIter++;
     }
 }
 
@@ -31,7 +31,7 @@ void selectionSortRicor(int arr[], int dim, int start) {
 
     minIdx = findMin(arr, start, start + 1, dim);
     swap(&arr[minIdx], &arr[start]);
-    scambi_ric++;
+    swapsRic++;
     selectionSortRicor(arr, dim, start + 1);
 }
 
@@ -50,8 +50,8 @@ int main() {
 
     for (int i = 0; i < 4; ++i) {
         for (int j = 0; j < 6; ++j) {
-            scambi_iter = 0, confronti_iter = 0;
-            scambi_ric = 0, confronti_ric = 0;
+            swapsIter = 0, cmprsIter = 0;
+            swapsRic = 0, cmprsRic = 0;
 
             arr1 = generaArray(arrDim[j], i);
             arr2 = calloc(arrDim[j], sizeof(int));
@@ -65,7 +65,7 @@ int main() {
 
             printf("\nI: %d Dim: %d\n"
                    "T: %LF Confr: %llu Scambi: %llu\n",
-                   i, arrDim[j], t1, confronti_iter, scambi_iter);
+                   i, arrDim[j], t1, cmprsIter, swapsIter);
 
 
             start2 = clock();
@@ -76,7 +76,7 @@ int main() {
 
             printf("\nR: %d Dim: %d\n"
                    "T: %LF Confr: %llu Scambi: %llu\n",
-                   i, arrDim[j], t2, confronti_ric, scambi_ric);
+                   i, arrDim[j], t2, cmprsRic, swapsRic);
 
             free(arr1), free(arr2);
 

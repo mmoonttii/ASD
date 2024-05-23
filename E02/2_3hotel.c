@@ -50,7 +50,7 @@ int iterBinarySearch(Hotel arr[], int dim, char hotelRicName[DIM_NOME]) {
 }
 
 int main(){
-    Hotel array[DIM_ARR] = {{"Hotel Setart", 33.45, 5},
+    Hotel array[DIM_ARR] = {{"Hotel Setar", 33.45, 5},
                             {"T-Hotel", 67.00, 3},
                             {"Accor Hotel", 55.45, 4},
                             {"Casa mia hotel", 11.78, 5},

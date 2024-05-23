@@ -17,6 +17,7 @@ void selectionSortIter(int arr[], int dim) {
         swap(&arr[min], &arr[i]);
     }
 }
+
 int linearSearch(int arr[], int dim, int numRic) {
     int pos = 0;
     while ((pos < dim) && (arr[pos] <= numRic)) {

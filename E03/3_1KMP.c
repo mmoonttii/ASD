@@ -1,5 +1,8 @@
 #include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
+
+#define STR_LEN 128
 
 /* Knuth, Morris and Pratt è un algoritmo per il pattern matching che, a differenza dell'algoritmo banale
  * (che ha complessità O(n * m), ha complessità O(n + m)
@@ -50,14 +53,14 @@ int *funzInsuccesso(char *pat) {
     return insuccesso;
 }
 
-/*algoritmo KMP_match (Stringa stringa, Stringa pat) → intero
+/*algoritmo KMP_match (Stringa string, Stringa pat) → intero
     insucc ← insuccesso(pat)// array insuccesso
     i ← 0
     j ← 0
-    lenS ← lunghezza di stringa
+    lenS ← lunghezza di string
     lenP ← lunghezza di pat
     while (i < lenS and j < lenP) do
-        if (stringa[i] == pat[j]) then
+        if (string[i] == pat[j]) then
             i ← i+1
             j ← j+1
         else if (j == 0) then
@@ -69,16 +72,16 @@ int *funzInsuccesso(char *pat) {
     else return -1
 */
 
-int kmpMatch(char *stringa, char *pattern) {
+int kmpMatch(char *string, char *pattern) {
     int *insuccesso = funzInsuccesso(pattern);
 
     int i = 0,
         j = 0,
-        lenS = strlen(stringa),
+        lenS = strlen(string),
         lenP = strlen(pattern);
 
     while (i < lenS && j < lenP) {
-        if (stringa[i] == pattern[j]) {
+        if (string[i] == pattern[j]) {
             i++;
             j++;
         } else if (j == 0) {
@@ -87,13 +90,31 @@ int kmpMatch(char *stringa, char *pattern) {
             j = insuccesso[j - 1] + 1;
         }
     }
+
     if (j == lenP) {
+        free(insuccesso);
         return i - lenP;
     } else {
+        free(insuccesso);
         return -1;
     }
 }
 
 int main(){
+    char string[STR_LEN] = {},
+         pattern[STR_LEN] = {};
 
+    int idx;
+
+    printf("Inserisci stringa dove cercare il pattern: ");
+    scanf("%127[^\n]s", string);
+
+    printf("Inserisci pattern da cercare: ");
+    scanf("%127[^\n]s", pattern);
+
+    idx = kmpMatch(string, pattern);
+
+    printf("Il pattern è stato trovato alla pos %d", idx);
+
+    return 0;
 }

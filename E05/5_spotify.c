@@ -26,30 +26,24 @@
 #define DIM_NAME 50
 
 //struttura che rappresenta una CANZONE
-struct song
-{
+typedef struct song {
     char title[DIM_TITLE];
     char genre[DIM_GENRE];
     float length;
     struct song* prev;
     struct song* next;
-};
-
-typedef struct song Song;
+} Song;
 
 //struttura che rappresenta una PLAYLIST
-struct playlist
-{
+typedef struct playlist {
     char name[DIM_NAME];
     Song* top;
-};
-
-typedef struct playlist PlayList;
+} Playlist;
 
 //funzioni (gia' definite) per l'acquisizione e per la stampa di una canzone
 Song* acquireSong(); //acquisisce i dati di UNA canzone chiedendoli all'utente
 void printSong(Song* s); //stampa i dati relativi ad UNA canzone (passata tramite puntatore)
-void insertSong(PlayList* pl, Song* s);
+void insertSong(Playlist* pl, Song* s);
 
 //prototipi funzioni STUDENTE
 //...
@@ -57,7 +51,7 @@ void insertSong(PlayList* pl, Song* s);
 int main()
 {
   //Creazione di una PLAYLIST. Utilizzare e riempire questa playlist
-    PlayList p;
+    Playlist p;
     strcpy(p.name, "My favourite songs");
     p.top = NULL;
 
@@ -107,7 +101,7 @@ Song *nextSong(Song *s) {
 Song *prevSong(Song *s) {
 	return s->prev;
 }
-void insertSong(PlayList* pl, Song* s) {
+void insertSong(Playlist* pl, Song* s) {
 /* if(playlist vuota) then
 	<gestire il caso per la lista vuota>
 else
@@ -150,7 +144,7 @@ else
 	}
 }
 
-Song* findSong(PlayList* pl, char title[]) {
+Song* findSong(Playlist* pl, char title[]) {
 	Song *aux = NULL;
 
 	aux = pl->top;
@@ -163,11 +157,11 @@ Song* findSong(PlayList* pl, char title[]) {
 	return aux;
 }
 
-void deleteSong(PlayList *pl, Song *s) {
+void deleteSong(Playlist *pl, Song *s) {
 
 }
 
-void modifySong(PlayList *pl, Song *s) {
+void modifySong(Playlist *pl, Song *s) {
 	printSong(s);
 	printf("Inserisci i nuovi dati della canzone");
 	s = acquireSong();
@@ -178,7 +172,7 @@ void modifySong(PlayList *pl, Song *s) {
 
 
 
-void printPlaylist(PlayList *pl) {
+void printPlaylist(Playlist *pl) {
 	Song *aux = NULL;
 	aux = pl->top;
 	while (aux != NULL) {
