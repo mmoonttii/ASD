@@ -5,51 +5,53 @@ set(CMAKE_C_STANDARD 11)
 set(COMMON usefulFunctions.c
 		usefulFunctions.h)
 
-
-add_executable(1_1selectionSortIter
+add_executable(01_1selectionSortIter
 				${COMMON}
-				E01/1_1selectionSortIter.c)
+				E01/01_1selectionSortIter.c)
 
-add_executable(1_2antonino
-				E01/1_2antonino.c)
+add_executable(01_2antonino
+				E01/01_2antonino.c)
 
-add_executable(1_3linearSearch
+add_executable(01_3linearSearch
 				${COMMON}
-				E01/1_3linearSearch.c)
+				E01/01_3linearSearch.c)
 
-add_executable(1_45binarySearch
+add_executable(01_45binarySearch
 				${COMMON}
-				E01/1_45binarySearch.c)
+				E01/01_45binarySearch.c)
 
-add_executable(2_1selSortRicor
+add_executable(02_1selSortRicor
 				${COMMON}
-				E02/2_1selSortRicor.c)
+				E02/02_1selSortRicor.c)
 
-add_executable(2_2confrontoSelectionSort
+add_executable(02_2confrontoSelectionSort
 				${COMMON}
-        		E02/2_2confrontoSelectionSort.c)
+        		E02/02_2confrontoSelectionSort.c)
 
-add_executable(2_3hotel
-				E02/2_3hotel.c)
+add_executable(02_3hotel
+				E02/02_3hotel.c)
 
-add_executable(3_1KMP
+add_executable(03_1KMP
 				${COMMON}
-				E03/3_1KMP.c)
+				E03/03_1KMP.c)
 
-add_executable(3_3KMPCircolare
+add_executable(03_3KMPCircolare
 				${COMMON}
-				E03/3_3KMPCircolare.c
-				E03/3_3KMPCircolare.c)
+				E03/03_3KMPCircolare.c
+				E03/03_3KMPCircolare.c)
 
-add_executable(4_amazon
+add_executable(04_amazon
 				${COMMON}
-				E04/4_amazon.c)
+				E04/04_amazon.c)
 
-add_executable(5_spotify
-				E05/5_spotify.c)
+add_executable(05_spotify
+				E05/05_spotify.c)
 
-add_executable(6_alberi
-				E06/6_alberiDecisionali.c)
+add_executable(06_alberi
+				E06/06_alberiDecisionali.c)
+
+add_executable(07_er
+				E07/07_er.c)
 
 add_executable(10_parcheggio
 				E10/10_parcheggio.c)
