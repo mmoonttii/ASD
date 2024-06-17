@@ -86,10 +86,12 @@ int main()
             "\n[0] Esci");
         printf("\n>>> ");
         scanf("%d", &choice);
+		getchar();
 
         switch (choice) {
             case 1:
                 s = acquireSong();
+				getchar();
                 insertSong(&p, s);
                 break;
 
@@ -145,13 +147,14 @@ int main()
                     free(aux);
                     aux = p.top;
                 }
+
                 aux = b.top;
                 while (aux!=NULL) {
                     b.top = b.top->next;
                     free(aux);
                     aux = b.top;
                 }
-                aux = p.top;
+                aux = c.top;
                 while (aux!=NULL) {
                     c.top = c.top->next;
                     free(aux);
@@ -307,6 +310,7 @@ void modifySong(Playlist *pl, Song *s) {
 	deleteSong(pl, s);
 
 	printf("Inserisci i nuovi dati della canzone");
+	getchar();
 	s = acquireSong();
 
 	insertSong(pl, s);
@@ -318,6 +322,7 @@ void printPlaylist(Playlist *pl) {
 	aux = pl->top;
 	while (aux != NULL) {
 		printSong(aux);
+		aux = aux->next;
 	}
 }
 
@@ -327,6 +332,7 @@ void mergePlaylist(Playlist *plA, Playlist *plB, Playlist *plC) {
     Song *aux = NULL;
 
     // Copia lista A
+	aux = plA->top;
     while (aux != NULL) {
         aux = plA->top;
         plA->top = plA->top->next;
@@ -336,6 +342,7 @@ void mergePlaylist(Playlist *plA, Playlist *plB, Playlist *plC) {
     }
 
     // Copia lista B
+	aux = plA->top;
     while (aux != NULL) {
         aux = plB->top;
         plB->top = plB->top->next;

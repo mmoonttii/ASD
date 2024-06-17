@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+#define TEXT_LEN 128
 typedef struct nodo {
 	char *domanda;
 	struct nodo *si;
@@ -17,8 +18,9 @@ typedef struct nodo {
  * return new_nodo
  */
 Nodo *creaNodo(char *domanda) {
-	Nodo *new_nodo = (Nodo *)malloc(sizeof(Nodo));
-	strcpy(new_nodo->domanda, domanda);
+	Nodo *new_nodo = NULL;
+	new_nodo = (Nodo *)malloc(sizeof(Nodo));
+	new_nodo->domanda = domanda;
 	new_nodo->no = NULL;
 	new_nodo->si = NULL;
 	return new_nodo;
@@ -27,7 +29,7 @@ Nodo *creaNodo(char *domanda) {
 /*
  * algoritmo isLeaf(Nodo* nodo) -> Bool
  * if(nodo è una foglia):
- * return True
+ *      return True
  * return False
  */
 bool isLeaf(Nodo *nodo) {
@@ -83,10 +85,17 @@ char *navigaAlbero(Nodo *rdx) {
  *     return radice
  */
 
+char *creaDomanda() {
+	char *domanda = (char *)calloc(TEXT_LEN, sizeof(char));
+	printf("Inserisci domanda: ");
+	scanf(" %127[^\n]s", domanda);
+	return domanda;
+}
+
 Nodo *creaAlberoDecisionale(Nodo *rdx) {
-	bool flag;
+	bool flag, retry = false;
 	int choice = 0;
-	char *domanda = (char *)calloc(128, sizeof(char));
+	char *domanda;
 	Nodo *nodo = NULL,
 		 *new_nodo = NULL;
 	do {
@@ -94,33 +103,39 @@ Nodo *creaAlberoDecisionale(Nodo *rdx) {
 		choice = 0;
 
 		while (!isLeaf(nodo)) {
-			printf("[0] No\n"
-			       "[1] Si\n");
-			scanf("%d", &choice);
-			switch (choice) {
-				case 0:
-					nodo = nodo->no;
-				case 1:
-					nodo = nodo->si;
-				default:
-					printf("Errore\n");
-					exit(EXIT_FAILURE);
-			}
+			printf("%s\n", nodo->domanda);
+			do {
+				retry = false;
+				printf("[0] No\n"
+				       "[1] Si\n"
+					   ">>> ");
+				scanf("%d", &choice);
+				switch (choice) {
+					case 0:
+						nodo = nodo->no;
+					case 1:
+						nodo = nodo->si;
+					default:
+						printf("Errore, riprova\n");
+						retry = true;
+						getchar();
+				}
+			} while (retry);
 		}
-		printf("Inserisci testo per il prossimo nodo NO: ");
-		scanf("%127[^\n]s", domanda);
+
+		printf("Nodo no\n");
+		domanda = creaDomanda();
 		nodo->no = creaNodo(domanda);
 
-		printf("Inserisci testo per il prossimo nodo SI: ");
-		scanf("%127[^\n]s", domanda);
+		printf("Nodo si\n");
+		domanda = creaDomanda();
 		nodo->si = creaNodo(domanda);
 
 		printf("Hai finito o vuoi continuare?\n"
-			   "[0] Finito\n"
+			   "[0] xFinito\n"
 			   "[1] Voglio continuare\n");
 		scanf("%d", &choice);
-		flag = choice == 0 ? false : true;
-	} while (flag);
+	} while (choice == 0 ? false : true);
 	return rdx;
 }
 
@@ -131,11 +146,20 @@ void classificaPesce(Nodo *rdx) {
 }
 
 void freeAll(Nodo *rdx) {
-	Nodo *nodo = rdx;
-	while (!isLeaf)
+	if (rdx != NULL) {
+		freeAll(rdx->si);
+		freeAll(rdx->no);
+	}
+	free(rdx);
 }
 
 int main(){
-	Nodo *rdx = (Nodo *)malloc(sizeof(Nodo));
-	creaAlberoDecisionale(rdx);
+	Nodo *rdx = NULL;
+	char *domanda = creaDomanda();
+	rdx = creaNodo(domanda);
+	rdx = creaAlberoDecisionale(rdx);
+
+	classificaPesce(rdx);
+	freeAll(rdx);
+	return 0;
 }
