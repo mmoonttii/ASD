@@ -53,7 +53,7 @@ char *navigaAlbero(Nodo *rdx) {
 
 	while (!isLeaf(nodo)) {
 		choice = 0;
-		printf("%s\n", nodo->domanda);
+		printf(" %s\n", nodo->domanda);
 		printf("[0] No\n"
 			   "[1] Si\n");
 		scanf("%d", &choice);
@@ -62,9 +62,6 @@ char *navigaAlbero(Nodo *rdx) {
 				nodo = nodo->no;
 			case 1:
 				nodo = nodo->si;
-			default:
-				printf("Errore\n");
-				exit(EXIT_FAILURE);
 		}
 	}
 	return nodo->domanda;
@@ -86,9 +83,10 @@ char *navigaAlbero(Nodo *rdx) {
  */
 
 char *creaDomanda() {
-	char *domanda = (char *)calloc(TEXT_LEN, sizeof(char));
+	char *domanda = NULL;
+	domanda = (char *)calloc(TEXT_LEN + 1, sizeof(char));
 	printf("Inserisci domanda: ");
-	scanf(" %127[^\n]s", domanda);
+	scanf(" %128[^\n]s", domanda);
 	return domanda;
 }
 
@@ -96,14 +94,11 @@ Nodo *creaAlberoDecisionale(Nodo *rdx) {
 	bool flag, retry = false;
 	int choice = 0;
 	char *domanda;
-	Nodo *nodo = NULL,
-		 *new_nodo = NULL;
+	Nodo *nodo = NULL;
 	do {
 		nodo = rdx;
-		choice = 0;
-
 		while (!isLeaf(nodo)) {
-			printf("%s\n", nodo->domanda);
+			printf(" %s\n", nodo->domanda);
 			do {
 				retry = false;
 				printf("[0] No\n"
@@ -118,11 +113,10 @@ Nodo *creaAlberoDecisionale(Nodo *rdx) {
 					default:
 						printf("Errore, riprova\n");
 						retry = true;
-						getchar();
 				}
 			} while (retry);
 		}
-
+		printf("%s\n", nodo->domanda);
 		printf("Nodo no\n");
 		domanda = creaDomanda();
 		nodo->no = creaNodo(domanda);
@@ -132,10 +126,11 @@ Nodo *creaAlberoDecisionale(Nodo *rdx) {
 		nodo->si = creaNodo(domanda);
 
 		printf("Hai finito o vuoi continuare?\n"
-			   "[0] xFinito\n"
+			   "[0] Finito\n"
 			   "[1] Voglio continuare\n");
 		scanf("%d", &choice);
-	} while (choice == 0 ? false : true);
+		flag = choice == 0 ? false : true;
+	} while (flag);
 	return rdx;
 }
 
@@ -155,7 +150,8 @@ void freeAll(Nodo *rdx) {
 
 int main(){
 	Nodo *rdx = NULL;
-	char *domanda = creaDomanda();
+	char *domanda = NULL;
+	domanda = creaDomanda();
 	rdx = creaNodo(domanda);
 	rdx = creaAlberoDecisionale(rdx);
 
