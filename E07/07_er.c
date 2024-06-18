@@ -1,12 +1,11 @@
-/** Pronto Soccorso 
+/** Pronto Soccorso
  * Si vuole simulare la gestione di una coda di attesa al pronto soccorso gestendo i pazienti come una coda con priorità
  * La priorità dipende dal codice colore bianco < verde < giallo < rosso
  */
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
-
+#include <stdbool.h>
 
 #define DIM_NOME 50
 #define DIM_HEAP 50
@@ -43,7 +42,7 @@ typedef struct {
     int ordine;
 } Paziente;
 
-/*funzione che chiede i dati relativi ad un nuovo paziente e lo restituisce (con il campo ordine calcolato automaticamente), 
+/*funzione che chiede i dati relativi ad un nuovo paziente e lo restituisce (con il campo ordine calcolato automaticamente),
 pronto per essere inserito nella coda con priorita' (heap) */
 Paziente nuovoPaziente(ProntoSoccorso *ps);
 void printPaziente(Paziente paz);
@@ -59,7 +58,7 @@ int main() {
 
     //inizializzazione della Coda con priorita'
     Paziente coda[DIM_HEAP];
-    int dim_coda = 0;
+    int dimCoda = 0;
     Paziente tempPaziente;
     Menu choice;
 
@@ -78,30 +77,24 @@ int main() {
         switch (choice) {
         case LEAVE:
             printf("Stai lasciando il sistema");
-            sleep(1u);
-            printf(".");
-            sleep(1u);
-            printf(".");
-            sleep(1u);
-            printf(".");
             break;
-        
+
         case ADD:
             tempPaziente = nuovoPaziente(&ps);
-            insertHeap(coda, tempPaziente, &dim_coda);
+            insertHeap(coda, tempPaziente, &dimCoda);
             break;
-        
+
         case COMPARE:
             printf("=== WIP ===\n");
             break;
 
         case REMOVE:
-            tempPaziente = deleteHeap(coda, &dim_coda);
+            tempPaziente = deleteHeap(coda, &dimCoda);
             printPaziente(tempPaziente);
             break;
 
         case PRINT:
-            printHeap(coda, dim_coda);
+            printHeap(coda, dimCoda);
             break;
 
         case ERR:
@@ -177,22 +170,22 @@ int priorita(Paziente *p1, Paziente *p2) {
  *  while (i ≠ 1 and item ha priorità superiore di heap[i/2]) do
  *      heap[i] ← heap[i/2]
  *      i ← i/2
- * heap[i] ← item 
+ * heap[i] ← item
  */
 
-void insertHeap(Paziente coda[], Paziente paziente, int *n) {
-    if (*n == DIM_HEAP-1) {
+void insertHeap(Paziente coda[], Paziente paziente, int *dimCoda) {
+    if (*dimCoda == DIM_HEAP-1) {
         printf("L'heap e' pieno");
         return;
     }
-    *n++;
-    int i = *n;
+    (*dimCoda)++;
+    int i = *dimCoda;
 
-    while (i != 1 && priorita(&paziente, &coda[i/2]) == 1/*item ha priorità superiore di heap[i/2]*/) { 
+    while (i != 1 && priorita(&paziente, &coda[i/2]) == 1/*item ha priorità superiore di heap[i/2]*/) {
         coda[i] = coda[i/2];
         i = i/2;
     }
-    coda[i] = paziente; 
+    coda[i] = paziente;
 }
 
 /** algoritmo deleteHeap(array heap, puntatore a intero n) → elemento
@@ -217,7 +210,7 @@ Paziente deleteHeap(Paziente coda[], int *n) {
     // cancella e restituisce l’elemento radice in un heap di n elementi
     Paziente item = coda[1];
     Paziente temp = coda[(*n)];
-    *n--;
+    (*n)--;
     int padre = 1;
     int figlio = 2;
 
@@ -239,13 +232,12 @@ Paziente deleteHeap(Paziente coda[], int *n) {
 }
 
 void printHeap(Paziente coda[], int n) {
-    
+
     printf("Pazienti\n");
     for (int i = 1; i <= n; i++) {
         printf(" %d:", i);
         printPaziente(coda[i]);
     }
-    
 }
 
 void printPaziente(Paziente paz) {
