@@ -206,20 +206,22 @@ void carica_grafo_test_non_orientato(Citta grafo [], int num_nodi) {
     crea_arco(grafo, 10, 9, num_nodi);
 }
 
-/**
- * Aggiungi nodo, incrementa il numero di nodi, rialloca l'array corrispondente, acquisisce le informazioni di un nodo e le stora
- * @param grafo è l'array che contiene i nodi del grafo
- * @param num_nodi è il numero di nodi del grafo
- */
+/// Funzioni da implementare
+/*
+    Aggiunge una città nel grafo chiedendo i dati all’utente
+*/
 void aggiungi_nodo(Citta grafo[], int *num_nodi) {
 	char tmp_nome[DIM] = {},
 		 tmp_nazione[DIM] = {};
 
 	int tmp_abitanti = 0;
 
-	(*num_nodi)++;
-	grafo = (Citta *)realloc(grafo, *num_nodi);
+	if (*num_nodi >= MAX_VERTICI) {
+        printf("Grafo pieno\n");
+        return;
+	}
 
+	(*num_nodi)++;
 	printf("Inserisci nome città: ");
 	scanf("%[^\n]50s", tmp_nome);
 	printf("Insrisci nazione città: ");
@@ -233,17 +235,31 @@ void aggiungi_nodo(Citta grafo[], int *num_nodi) {
 	grafo[*num_nodi - 1].lista_adj = NULL;
 }
 
+/*
+    crea un arco tra due nodi esistenti (orientato)
+*/
 void crea_arco(Citta grafo[], int id_coda, int id_testa, int num_nodi) {
-	Node *adj = (Node *)malloc(sizeof(Node)),
-		 *aux = NULL;
+	Node *nodo_adj = NULL,
+		 *lista_adj = NULL;
 
-	aux = grafo[id_testa].lista_adj;
+	nodo_adj = (Node *)malloc(sizeof(Node));
 
-	if (aux == NULL) {
-		grafo[id_testa].lista_adj = adj;
+	if (id_coda < 0 || id_coda > num_nodi - 1) {
+        printf("Id nodo coda non valido\n");
+        return;
+    }
+	if (id_testa < 0 || id_testa > num_nodi - 1) {
+        printf("Id nodo testa non valido\n");
+        return;
+    }
+
+	lista_adj = grafo[id_testa].lista_adj;
+
+	if (lista_adj == NULL) {
+		grafo[id_testa].lista_adj = nodo_adj;
 	} else {
-		for (; aux->link != NULL; aux = aux->link);
-		aux->link = adj;
+		for (; lista_adj->link != NULL; lista_adj = lista_adj->link);
+		lista_adj->link = nodo_adj;
 	}
 }
 

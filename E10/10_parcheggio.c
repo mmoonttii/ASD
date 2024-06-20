@@ -16,13 +16,15 @@
 #define MAX_TARGA 10
 #define NUM_PIANI 7
 
-typedef struct {
+typedef struct
+{
     char targa[MAX_TARGA];
     int ora;
     int min;
 } Auto;
 
-typedef struct nodo {
+typedef struct nodo
+{
     Auto info;
     struct nodo *link;
 } Nodo;
@@ -50,35 +52,62 @@ int main() {
 
     while (1) {
         puts("PDS Parking\n"
-             "[1] Stampa parcheggio\n"
-             "[2] Cerca auto\n"
+             "[1] Aggiungi auto\n"
+             "[2] Stampa piano\n"
+             "[3] Stampa parcheggio\n"
+             "[4] Cerca auto\n"
+             "[5] Elimina auto\n"
              "[0] Lascia parcheggio\n"
              ">>> ");
         scanf("%d", &choice);
 
         switch (choice) {
-        case 1:
-            stampa_parcheggio(parcheggio);
-            break;
-        
-        case 2:
-            puts("Inserisci targa da ricercare: ");
-            scanf("%6s", targa);
-            found = ricerca_auto(parcheggio, targa);
+            case 1:
+                inserisci_auto(parcheggio, acquisisci_auto());
+                break;
 
-            puts("Ecco l'auto\n");
-            printf("> %6s %2d:%2d\n", found->info.targa, found->info.ora, found->info.min);
-            break;
+            case 2:
+                puts("Inserisci piano da stampare: ");
+                scanf("%d", &choice);
+                if (choice >= NUM_PIANI) {
+                    puts("Piano non valido, riprovare\n");
+                    break;
+                }
+                stampa_piano(parcheggio, choice);
+                break;
 
-        case 0:
-            exit(EXIT_SUCCESS);
-        default:
-            puts("Input non valido");
-            break;
-        }
-        
+            case 3:
+                stampa_parcheggio(parcheggio);
+                break;
+
+            case 4:
+                puts("Inserisci targa da ricercare: ");
+                scanf("%6s", targa);
+                found = ricerca_auto(parcheggio, targa);
+
+                if (found == NULL) {
+                    puts("Auto non trovata");
+                    break;
+                }
+
+                puts("Ecco l'auto\n");
+                printf("> %6s Piano %d - %2d:%2d\n", found->info.targa, hash_function(found->info.targa), found->info.ora, found->info.min);
+                break;
+
+            case 5:
+                printf("Targa dell'auto da eliminare:");
+                scanf("%6s", targa);
+                elimina_auto(parcheggio, targa);
+                break;
+
+            case 0:
+                exit(EXIT_SUCCESS);
+
+            default:
+                puts("Input non valido");
+                break;
+            }
     }
-
     return 0;
 }
 
@@ -110,7 +139,7 @@ void carica_auto_test(Nodo* parcheggio[]) {
 
 int hash_function(char targa[]) {
     int hash = 0;
-    for (int i = 0; i < MAX_TARGA; i++)
+    for (int i = 0; i < MAX_TARGA && targa[i] != '\0'; i++)
     {
         hash += targa[i];
     }
@@ -121,7 +150,7 @@ int hash_function(char targa[]) {
 Auto acquisisci_auto() {
     Auto car;
     puts("Inserisci targa: ");
-    scanf("%10s", &car.targa);
+    scanf("%10s", car.targa);
     puts("Inserisci ora di arrivo: ");
     scanf("%d", &car.ora);
     puts("Inserisci minuti di arrivo: ");
@@ -131,15 +160,17 @@ Auto acquisisci_auto() {
 }
 
 void inserisci_auto(Nodo* parcheggio[], Auto a) {
-    int h = hash_function(a.targa);
-    Nodo *aux = NULL;
-    Nodo *node = (Nodo *)malloc(sizeof(Nodo));
+    int hash = hash_function(a.targa);
+    Nodo *aux = NULL,
+         *node = NULL;
+    node = (Nodo *)malloc(sizeof(Nodo));
     node->info = a;
+    node->link = NULL;
 
-    if (parcheggio[h] == NULL) {
-        parcheggio[h] = node;
+    if (parcheggio[hash] == NULL) {
+        parcheggio[hash] = node;
     } else {
-        for (aux = parcheggio[h]; aux->link != NULL; aux = aux->link);
+        for (aux = parcheggio[hash]; aux->link != NULL; aux = aux->link);
         aux->link = node;
     }
 }
@@ -150,20 +181,21 @@ void stampa_parcheggio(Nodo* parcheggio[]) {
     }
 }
 
-void stampa_piano(Nodo* parcheggio[], int piano) {
+void stampa_piano(Nodo* parcheggio[], int floor) {
     Nodo *aux = NULL;
-    printf("Piano %d:\n", piano);
-    for (aux = parcheggio[piano]; aux != NULL; aux = aux->link) {
+    printf("Piano %d:\n", floor);
+    for (aux = parcheggio[floor]; aux != NULL; aux = aux->link) {
         printf("\t%6s -> %2d:%2d\n", aux->info.targa, aux->info.ora, aux->info.min);
     }
 }
 
 Nodo* ricerca_auto(Nodo* parcheggio[], char targa[]) {
     int hash = hash_function(targa);
-    Nodo* aux = parcheggio[hash];
+    Nodo* aux = NULL;
+    aux = parcheggio[hash];
 
-    for (; strcmp(aux->info.targa, targa) != 0; aux = aux->link);
-    return aux;  
+    for (; aux != NULL && strcmp(aux->info.targa, targa) != 0; aux = aux->link);
+    return aux;
 }
 
 void elimina_auto(Nodo* parcheggio[], char targa[]) {
@@ -171,7 +203,7 @@ void elimina_auto(Nodo* parcheggio[], char targa[]) {
     Nodo *aux = parcheggio[hash],
          *prev = NULL;
 
-    for (; strcmp(aux->info.targa, targa) != 0; aux = aux->link){
+    for (; aux != NULL && strcmp(aux->info.targa, targa) != 0; aux = aux->link){
         prev = aux;
     }
 
