@@ -60,8 +60,10 @@ char *navigaAlbero(Nodo *rdx) {
 		switch (choice) {
 			case 0:
 				nodo = nodo->no;
+				break;
 			case 1:
 				nodo = nodo->si;
+				break;
 		}
 	}
 	return nodo->domanda;
@@ -85,22 +87,22 @@ char *navigaAlbero(Nodo *rdx) {
 char *creaDomanda() {
 	char *domanda = NULL;
 	domanda = (char *)calloc(TEXT_LEN + 1, sizeof(char));
-	printf("Inserisci domanda: ");
+	printf("Inserisci domanda o risposta se foglia: ");
 	scanf(" %128[^\n]s", domanda);
 	return domanda;
 }
 
 Nodo *creaAlberoDecisionale(Nodo *rdx) {
-	bool flag, retry = false;
+	bool flag;
 	int choice = 0;
-	char *domanda;
 	Nodo *nodo = NULL;
+	char *domanda = NULL;
 	do {
 		nodo = rdx;
 		while (!isLeaf(nodo)) {
 			printf(" %s\n", nodo->domanda);
 			do {
-				retry = false;
+				flag = false;
 				printf("[0] No\n"
 				       "[1] Si\n"
 					   ">>> ");
@@ -108,20 +110,23 @@ Nodo *creaAlberoDecisionale(Nodo *rdx) {
 				switch (choice) {
 					case 0:
 						nodo = nodo->no;
+						break;
 					case 1:
 						nodo = nodo->si;
+						break;
 					default:
 						printf("Errore, riprova\n");
-						retry = true;
+						flag = true;
 				}
-			} while (retry);
+			} while (flag);
 		}
+
 		printf("%s\n", nodo->domanda);
-		printf("Nodo no\n");
+		printf("Figlio no\n");
 		domanda = creaDomanda();
 		nodo->no = creaNodo(domanda);
 
-		printf("Nodo si\n");
+		printf("Figlio si\n");
 		domanda = creaDomanda();
 		nodo->si = creaNodo(domanda);
 
@@ -140,10 +145,10 @@ void classificaPesce(Nodo *rdx) {
 	printf("%s", ans);
 }
 
-void freeAll(Nodo *rdx) {
+void freeTree(Nodo *rdx) {
 	if (rdx != NULL) {
-		freeAll(rdx->si);
-		freeAll(rdx->no);
+		freeTree(rdx->si);
+		freeTree(rdx->no);
 	}
 	free(rdx);
 }
@@ -151,11 +156,21 @@ void freeAll(Nodo *rdx) {
 int main(){
 	Nodo *rdx = NULL;
 	char *domanda = NULL;
+	bool flag;
+	int choice = 0;
 	domanda = creaDomanda();
 	rdx = creaNodo(domanda);
 	rdx = creaAlberoDecisionale(rdx);
 
-	classificaPesce(rdx);
-	freeAll(rdx);
+	do {
+		classificaPesce(rdx);
+		printf("\nVuoi continuare?\n"
+			   "[0] No\n"
+			   "[1] Si\n");
+		scanf("%d", &choice);
+		flag = choice == 0 ? false : true;
+	} while (flag);
+	free(domanda);
+	freeTree(rdx);
 	return 0;
 }
