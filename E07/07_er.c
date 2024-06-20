@@ -52,14 +52,17 @@ void insertHeap(Paziente coda[], Paziente paziente, int *n);
 int priorita(Paziente *p1, Paziente *p2);
 
 int main() {
-  //inizializzazione pronto soccorso
+    //inizializzazione pronto soccorso
     ProntoSoccorso ps;
     ps.numeroB = ps.numeroG = ps.numeroV = ps.numeroR = 0;
 
     //inizializzazione della Coda con priorita'
-    Paziente coda[DIM_HEAP];
-    int dimCoda = 0;
-    Paziente tempPaziente;
+    Paziente coda[DIM_HEAP],
+        tempPaziente;
+    int dimCoda = 0,
+        idx_p1,
+        idx_p2,
+        priority;
     Menu choice;
 
     printf("Sistema gestione Pronto Soccorso\n");
@@ -85,7 +88,16 @@ int main() {
             break;
 
         case COMPARE:
-            printf("=== WIP ===\n");
+            printf("Inserire indice paziente 1\n");
+            scanf("%d", &idx_p1);
+            printf("Inserire indice paziente 2\n");
+            scanf("%d", &idx_p2);
+            if (idx_p1 < 0 || idx_p1 >= dimCoda || idx_p2 < 0 || idx_p2 >= dimCoda) {
+                printf("Indici non validi\n");
+                break;
+            }
+            priority = priorita(&coda[idx_p1], &coda[idx_p2]);
+            printf("Il paziente %d ha la priorità", priority);
             break;
 
         case REMOVE:
