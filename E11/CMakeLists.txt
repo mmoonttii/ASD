@@ -8,3 +8,11 @@ set(COMMON ../usefulFunctions.c
 add_executable(11_1insertionSort
                 11_1insertionSort.c
                 ${COMMON})
+
+add_executable(11_2quickSort
+                11_2quickSort.c
+                ${COMMON})
+
+add_executable(11_3quickInsertionSort
+                11_3quickInsertionSort.c
+                ${COMMON})

@@ -1,14 +1,27 @@
 /// mergeSort
-
+#include "../usefulFunctions.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+
+#define N 100
 
 void mergeSort(int lista[], int ordinata[], int lower, int upper);
 void merge(int lista[], int ordinata[], int i, int m, int n);
 
 int main() {
-	return 0;
+    int *arr = generaArray(N, CASUALE),
+        *ordinata;
+    ordinata = (int *)calloc(N, sizeof(int));
+
+    printf("Array non ordinato: ");
+    printArray(arr, N);
+
+    mergeSort(arr, ordinata, 0, N-1);
+
+    printf("Array ordinato: ");
+    printArray(arr, N);
+    return 0;
 }
 
 /** algoritmo mergesort(array lista, array ordinata, int lower, int upper) → void

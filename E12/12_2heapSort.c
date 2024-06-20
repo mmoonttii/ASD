@@ -5,13 +5,22 @@
 #include <stdbool.h>
 #include "../usefulFunctions.h"
 
+#define N 100
 void heapSort(int lista[], int n);
 void adatta(int lista[], int radice, int n);
 
 int main() {
-	return 0;
-}
+    int *arr = generaArray(N, CASUALE);
 
+    printf("Array non ordinato: ");
+    printArray(arr, N);
+
+    heapSort(arr, N);
+
+    printf("Array ordinato: ");
+    printArray(arr, N);
+    return 0;
+}
 /**algoritmo heapsort(array lista, int n) → void
 	// Si costruisce lo heap associato all'insieme da ordinare lista
 	for i ← n/2 downto 1
