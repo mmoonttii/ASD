@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <time.h>
 #include "../usefulFunctions.h"
 
 #define N 100
@@ -10,14 +11,15 @@ void heapSort(int lista[], int n);
 void adatta(int lista[], int radice, int n);
 
 int main() {
+	srand(time(NULL));
     int *arr = generaArray(N, CASUALE);
 
     printf("Array non ordinato: ");
     printArray(arr, N);
-
+	arr[0] = 0;
     heapSort(arr, N);
 
-    printf("Array ordinato: ");
+    printf("\nArray ordinato: ");
     printArray(arr, N);
     return 0;
 }

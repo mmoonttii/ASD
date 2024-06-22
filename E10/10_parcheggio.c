@@ -60,7 +60,7 @@ int main() {
              "[0] Lascia parcheggio\n"
              ">>> ");
         scanf("%d", &choice);
-
+        getchar();
         switch (choice) {
             case 1:
                 inserisci_auto(parcheggio, acquisisci_auto());
@@ -82,7 +82,7 @@ int main() {
 
             case 4:
                 puts("Inserisci targa da ricercare: ");
-                scanf("%6s", targa);
+                scanf(" %6s", targa);
                 found = ricerca_auto(parcheggio, targa);
 
                 if (found == NULL) {
@@ -189,25 +189,38 @@ void stampa_piano(Nodo* parcheggio[], int floor) {
     }
 }
 
+/*Una funzione ricerca_auto(…) che permette di cercare un’auto nel parcheggio (prendendo in input
+il suo numero di targa) e restituisce il puntatore a nodo (Nodo*) che la rappresenta*/
 Nodo* ricerca_auto(Nodo* parcheggio[], char targa[]) {
     int hash = hash_function(targa);
     Nodo* aux = NULL;
     aux = parcheggio[hash];
 
-    for (; aux != NULL && strcmp(aux->info.targa, targa) != 0; aux = aux->link);
+    while (aux != NULL && strcmp(aux->info.targa, targa) != 0) {
+        aux = aux->link;
+    }
     return aux;
 }
 
 void elimina_auto(Nodo* parcheggio[], char targa[]) {
     int hash = hash_function(targa);
-    Nodo *aux = parcheggio[hash],
-         *prev = NULL;
+    Nodo *aux = ricerca_auto(parcheggio, targa);
 
-    for (; aux != NULL && strcmp(aux->info.targa, targa) != 0; aux = aux->link){
-        prev = aux;
+    if (aux == NULL) {
+        puts("Auto non trovata\n");
+        return;
     }
 
-    prev->link = aux->link;
-
-    free(aux);
+    if (parcheggio[hash] == aux) {
+        parcheggio[hash] = aux->link;
+        free(aux);
+        return;
+    } else {
+        Nodo *prev = parcheggio[hash];
+        while (prev->link != aux) {
+            prev = prev->link;
+        }
+        prev->link = aux->link;
+        free(aux);
+    }
 }

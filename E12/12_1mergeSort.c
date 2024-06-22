@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <time.h>
 
 #define N 100
 
@@ -10,6 +11,7 @@ void mergeSort(int lista[], int ordinata[], int lower, int upper);
 void merge(int lista[], int ordinata[], int i, int m, int n);
 
 int main() {
+	srand(time(NULL));
     int *arr = generaArray(N, CASUALE),
         *ordinata;
     ordinata = (int *)calloc(N, sizeof(int));
@@ -19,7 +21,7 @@ int main() {
 
     mergeSort(arr, ordinata, 0, N-1);
 
-    printf("Array ordinato: ");
+    printf("\nArray ordinato: ");
     printArray(arr, N);
     return 0;
 }

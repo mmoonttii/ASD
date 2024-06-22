@@ -23,7 +23,7 @@ int main(){
 		*arr = NULL;
 
     arr = generaArray(dim, ORDINATO);
-    printf("\nArr generato\n");
+    printf("Arr generato\n");
 
     start = clock();
 	selectionSortRicor(arr, dim, 0);

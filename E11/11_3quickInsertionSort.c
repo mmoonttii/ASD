@@ -19,7 +19,7 @@ array prima e dopo l’ordinamento.
 #include <stdlib.h>
 #include <time.h>
 
-#define N 20
+#define N 100
 
 void insertionSort(int lista[], int dim) {
 	int prossimo;
@@ -63,7 +63,7 @@ int perno(int arr[], int primo, int ultimo) {
 void quickInsertionSort(int arr[], int u, int v, int m){
     if (v - u <= m) {
         insertionSort(arr, v+1);
-        return;z
+        return;
     }
     int q = perno(arr, u, v);
     if (u < q) quickInsertionSort(arr, u, q - 1, m);
@@ -84,7 +84,7 @@ int main() {
 
     quickInsertionSort(arr, 0, N - 1, m);
 
-    printf("Array dopo l'ordinamento:\n");
+    printf("\nArray dopo l'ordinamento:\n");
     printArray(arr, N);
     return 0;
 }

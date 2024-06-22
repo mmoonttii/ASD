@@ -1,5 +1,7 @@
 #include "../usefulFunctions.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 #define N 100
 /**algoritmo perno(array lista, int primo, int ultimo) → int
@@ -59,14 +61,15 @@ genera_array(…) dell’esercitazione 1);
 precedentemente creata/riciclata)
 */
 int main() {
+	srand(time(NULL));
     int *arr = generaArray(N, CASUALE);
 
-    puts("Array non ordinato\n");
+    puts("Array non ordinato: ");
     printArray(arr, N);
 
     quickSort(arr, 0, N - 1);
 
-    puts("Array ordinato\n");
+    puts("\nArray ordinato: ");
     printArray(arr, N);
     return 0;
 }

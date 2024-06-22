@@ -66,7 +66,10 @@ int main(){
     scanf(" %[^\n]31s", hotelRicName);
 
     found = iterBinarySearch(array, DIM_ARR, hotelRicName);
-
+    if (found == -1) {
+        printf("Hotel non trovato");
+        return 1;
+    }
     printf("Found at pos: %d\n"
            "Name: %s\n"
            "Price: %lf\n"

@@ -107,10 +107,10 @@ int main(){
     int idx;
 
     printf("Inserisci stringa dove cercare il pattern: ");
-    scanf("%127[^\n]s", string);
+    scanf(" %127[^\n]s", string);
 
     printf("Inserisci pattern da cercare: ");
-    scanf("%127[^\n]s", pattern);
+    scanf(" %127[^\n]s", pattern);
 
     idx = kmpMatch(string, pattern);
 

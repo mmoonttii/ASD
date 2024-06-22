@@ -98,15 +98,15 @@ int main(){
 
     int idx;
 
-    bool retry = false;
+    bool retry = true;
 
     while (retry){
         retry = false;
         printf("Inserisci stringa dove cercare il pattern: ");
-        scanf("%127[^\n]s", string);
+        scanf(" %127[^\n]s", string);
 
         printf("Inserisci pattern ciclico da cercare: ");
-        scanf("%127[^\n]s", pattern);
+        scanf(" %127[^\n]s", pattern);
 
         if (strlen(string) != strlen(pattern)) {
             printf("Il pattern e la stringa devono avere la stessa lunghezza, riprovare");

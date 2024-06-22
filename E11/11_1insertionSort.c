@@ -1,5 +1,8 @@
 #include "../usefulFunctions.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
 #define N 100
 /*
 algoritmo insertionSort(array lista, int dim) → void
@@ -39,14 +42,15 @@ Utilizzare questa funzione per stampare l’array prima e dopo l’ordinamento
 */
 
 int main(){
+	srand(time(NULL));
     int *arr = generaArray(N, CASUALE);
 
-    puts("Array non ordinato\n");
+    puts("\nArray non ordinato:");
     printArray(arr, N);
 
     insertionSort(arr, N);
 
-    puts("Array ordinato\n");
+    puts("\nArray ordinato:");
     printArray(arr, N);
     return 0;
 }

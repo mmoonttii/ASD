@@ -13,5 +13,4 @@ add_executable(02_2confrontoSelectionSort
 				02_2confrontoSelectionSort.c)
 
 add_executable(02_3hotel
-				${COMMON}
 				02_3hotel.c)
