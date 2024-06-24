@@ -49,7 +49,8 @@ int main(){
 
 
 	arr = generaArray(dim, ORDINATO);
-    printf("\nArr generato\n");
+	printf("\nArray non ordinato: ");
+	printArray(arr, dim);
 
 	start = clock();
     selectionSortIter(arr, dim);
@@ -57,8 +58,10 @@ int main(){
 
 	t = ((double) (end - start)) / CLOCKS_PER_SEC;
 
+	printf("\nArray ordinato: ");Ω
 	printArray(arr, dim);
     printf("\ntempo impiegato: %lf sec", t);
 
+	free(arr);
 	return 0;
 }

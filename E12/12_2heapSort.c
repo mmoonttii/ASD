@@ -14,13 +14,14 @@ int main() {
 	srand(time(NULL));
     int *arr = generaArray(N, CASUALE);
 
+	arr[0] = 0;
     printf("Array non ordinato: ");
     printArray(arr, N);
-	arr[0] = 0;
     heapSort(arr, N);
 
     printf("\nArray ordinato: ");
     printArray(arr, N);
+	free(arr);
     return 0;
 }
 /**algoritmo heapsort(array lista, int n) → void

@@ -142,6 +142,7 @@ void manual(int arrayDims[N_DIMS], char *schemeNames[], char *algsNames[]) {
 		printf("Array ordinato: ");
 		printArray(arr, arrayDims[dim]);
 	}
+	free(arr);
 }
 
 void automatic(int arrayDims[N_DIMS], char *schemeNames[], char *algsNames[]){

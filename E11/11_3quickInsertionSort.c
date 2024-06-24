@@ -86,5 +86,6 @@ int main() {
 
     printf("\nArray dopo l'ordinamento:\n");
     printArray(arr, N);
+	free(arr);
     return 0;
 }

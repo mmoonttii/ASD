@@ -23,6 +23,8 @@ int main() {
 
     printf("\nArray ordinato: ");
     printArray(arr, N);
+	free(ordinata);
+	free(arr);
     return 0;
 }
 

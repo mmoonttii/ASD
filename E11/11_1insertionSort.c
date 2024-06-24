@@ -52,5 +52,6 @@ int main(){
 
     puts("\nArray ordinato:");
     printArray(arr, N);
+	free(arr);
     return 0;
 }

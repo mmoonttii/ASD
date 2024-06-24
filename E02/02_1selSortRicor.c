@@ -34,5 +34,6 @@ int main(){
     printArray(arr, dim);
     printf("\ntempo impiegato: %lf sec", t);
 
+	free(arr);
     return 0;
 }

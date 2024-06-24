@@ -79,8 +79,13 @@ int main(){
         idx;
 
     arr = generaArray(dim, CASUALE);
+
+    printf("Array non ordinato: ");
+    printArray(arr, dim);
+
     selectionSortIter(arr, dim);
 
+    printf("\nArray ordinato: ");
     printArray(arr, dim);
 
     printf("\nInserisci elemento da cercare: ");
@@ -105,5 +110,7 @@ int main(){
     printf("\nL'elemento è in posizione %d", idx);
     printf("\nIl tempo impiegato è %lf", t);
     printf("\nGli elementi analizzati sono %d", contBR);
+
+    free(arr);
     return 0;
 }
